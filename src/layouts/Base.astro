@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  doc?: boolean;
+}
+const { title, description, doc } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+{description && <meta name="description" content={description} />}
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<style is:global>
+  :root { --cream:#FFF6E8; --sun:#F7B733; --pebble:#6E6E73; --ink:#232733; }
+  * { margin:0; box-sizing:border-box; }
+  body { font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+         background:var(--cream); color:var(--ink); line-height:1.6; }
+  main { max-width:640px; margin:0 auto; padding:64px 24px; }
+  h1, h2, h3 { font-family:"New York", "Iowan Old Style", Georgia, serif; }
+  h1 { font-size:2.2rem; margin:24px 0 6px; letter-spacing:-.02em; }
+  a { color:inherit; }
+  nav a { color:var(--pebble); text-decoration:none; font-size:.9rem; }
+  .tagline { font-size:1.15rem; color:var(--pebble); }
+  .logo { width:88px; height:88px; border-radius:22px; }
+  section { margin-top:56px; }
+  .label { font-family:inherit; font-size:.9rem; text-transform:uppercase;
+           letter-spacing:.08em; color:var(--pebble); margin-bottom:16px; }
+  .app { display:block; background:#fff; border-radius:16px; padding:24px;
+         text-decoration:none; color:inherit; box-shadow:0 1px 3px rgba(35,39,51,.08); }
+  .app + .app { margin-top:16px; }
+  .app:hover { box-shadow:0 4px 14px rgba(35,39,51,.12); }
+  .app h3 { font-size:1.25rem; }
+  .app p { color:var(--pebble); margin-top:4px; }
+  .badge { display:inline-block; margin-top:32px; font-weight:600;
+           background:#fff; color:#B07E15; border-radius:99px; padding:8px 20px; }
+  .app .badge { margin-top:12px; font-size:.8rem; background:var(--cream); padding:3px 12px; }
+  .features { margin:32px 0 0; padding:0; list-style:none; }
+  .features li { padding:14px 0; border-bottom:1px solid rgba(110,110,115,.15); }
+  .features li strong { display:block; }
+  .features li span { color:var(--pebble); font-size:.95rem; }
+  footer { margin-top:64px; font-size:.85rem; color:var(--pebble); }
+  .doc { line-height:1.7; }
+  .doc h1 { font-size:1.8rem; }
+  .doc h2 { font-size:1.1rem; margin:28px 0 8px; }
+  .doc p { margin-bottom:12px; }
+  .date { color:var(--pebble); font-size:.9rem; margin-bottom:32px; }
+</style>
+</head>
+<body>
+<main class:list={[doc && 'doc']}>
+  <slot />
+</main>
+</body>
+</html>
