@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.0.0...sunpebble.github.io-v1.1.0) (2026-07-03)
+
+
+### Features
+
+* add Fresh Pantry pages (landing, privacy, support) and BRAND.md ([7b7e697](https://github.com/sunpebble/sunpebble.github.io/commit/7b7e69769f33dd12eb8464be6eb949109f6330ba))
+
 ## 1.0.0 (2026-07-03)
 
 
