@@ -1,0 +1,7 @@
+{
+  "projectId": "ac6f0caf-7322-4904-a835-e7fff4004f3a",
+  "projectName": "Sunpebble Brand",
+  "shape": "brand-only",
+  "readmeHeader": ".design-sync/conventions.md",
+  "notes": "Off-script layout: no React component library exists — this syncs brand tokens, real site CSS, guidelines, and logo only. No _ds_bundle.js, no components/, no _ds_sync.json (next sync re-verifies everything)."
+}
