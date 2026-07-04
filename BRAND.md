@@ -56,3 +56,6 @@ metaphor layer:
 - Web: `src/layouts/Base.astro` (`:root` CSS variables) — this repo
 - Dayroll: `App/Tape.swift` · Simmer: `App/Theme.swift` · Sleeptab: `App/Theme.swift`
 - Fresh Pantry: `apps/ios/FreshPantry/DesignSystem/FkColor.swift`
+- SQL Pro: `apps/electron/src/renderer/src/styles/globals.css` (app + webapp),
+  `apps/website/src/index.css` (site), `apps/video/src/constants.ts` (promo),
+  `packages/docs/.vitepress/theme/brand.css` (docs)
