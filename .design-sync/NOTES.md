@@ -1,5 +1,9 @@
 # design-sync notes — Sunpebble Brand
 
+- 2026-07-04 re-sync: the original project (`ac6f0caf-…`) came back 404 under a
+  fresh design authorization (deleted or different account); recreated as
+  `c007f599-…` and re-uploaded the unchanged bundle. Sources unchanged since
+  first sync; conventions.md re-validated clean.
 - 2026-07-04 first sync. User explicitly chose the Sunpebble brand (this repo)
   over sql-pro/packages/ui as the sync target.
 - Off-script layout: this repo is an Astro marketing site with NO React
