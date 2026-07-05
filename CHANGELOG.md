@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.4.0...sunpebble.github.io-v1.4.1) (2026-07-05)
+
+
+### Bug Fixes
+
+* make Pages artifact rerun safe ([b4c8fda](https://github.com/sunpebble/sunpebble.github.io/commit/b4c8fda60cde0c85a901913e23d578f3172ffd9e))
+
 ## [1.4.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.3.0...sunpebble.github.io-v1.4.0) (2026-07-05)
 
 
