@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.1.0...sunpebble.github.io-v1.1.1) (2026-07-05)
+
+
+### Bug Fixes
+
+* badge gold [#8](https://github.com/sunpebble/sunpebble.github.io/issues/8)E6511 for WCAG AA contrast on white/cream ([9d17ec5](https://github.com/sunpebble/sunpebble.github.io/commit/9d17ec5a66298dc5c2226fddd1ef06ea5a588583))
+
 ## [1.1.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.0.0...sunpebble.github.io-v1.1.0) (2026-07-03)
 
 
