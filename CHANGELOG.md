@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.1.1...sunpebble.github.io-v1.2.0) (2026-07-05)
+
+
+### Features
+
+* add Steady pages ([6217840](https://github.com/sunpebble/sunpebble.github.io/commit/6217840b102502e652ecece2be2ca88bd0eb9637))
+
 ## [1.1.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.1.0...sunpebble.github.io-v1.1.1) (2026-07-05)
 
 
