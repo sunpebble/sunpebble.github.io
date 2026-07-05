@@ -2,7 +2,8 @@
 
 The shared visual foundation for every Sunpebble app and page. Per-app
 personality (Dayroll's receipt tape, Sleeptab's night mode, Fresh Pantry's
-kitchen warmth) is built **on top of** this foundation, never instead of it.
+kitchen warmth, Quarry's workbench calm) is built **on top of** this foundation,
+never instead of it.
 
 ## Palette
 
@@ -49,13 +50,15 @@ metaphor layer:
 | Dayroll      | Receipt tape: monospaced type, perforation dividers |
 | Simmer       | Stove flame: sun accent as "flame" |
 | Sleeptab     | Night: dark-first (night/ink surfaces, cream text, sun glow) |
+| Steady       | Clinical calm: plain labels, quiet status color, export-first layouts |
 | Fresh Pantry | Kitchen: category tints, green "fresh" / amber "soon" / coral "expired" |
+| Quarry       | Workbench: dense native tables, crisp borders, restrained accent use |
 
 ## Canonical token files
 
 - Web: `src/layouts/Base.astro` (`:root` CSS variables) — this repo
 - Dayroll: `App/Tape.swift` · Simmer: `App/Theme.swift` · Sleeptab: `App/Theme.swift`
+- Steady: `App/Theme.swift`
 - Fresh Pantry: `apps/ios/FreshPantry/DesignSystem/FkColor.swift`
-- SQL Pro: `apps/electron/src/renderer/src/styles/globals.css` (app + webapp),
-  `apps/website/src/index.css` (site), `apps/video/src/constants.ts` (promo),
-  `packages/docs/.vitepress/theme/brand.css` (docs)
+- Quarry: `apps/swiftui/Sources/QuarrySwiftUI/Theme.swift`,
+  `apps/video/src/constants.ts` (promo), `packages/docs/.vitepress/theme/brand.css` (docs)
