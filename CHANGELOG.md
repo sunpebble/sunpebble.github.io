@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.3.0...sunpebble.github.io-v1.4.0) (2026-07-05)
+
+
+### Features
+
+* show Quarry app icon ([8079132](https://github.com/sunpebble/sunpebble.github.io/commit/8079132ecbb03965e3b8ccf5efbb18d6b119f0e0))
+
 ## [1.3.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.2.1...sunpebble.github.io-v1.3.0) (2026-07-05)
 
 
