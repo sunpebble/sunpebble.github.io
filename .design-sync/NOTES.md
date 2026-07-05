@@ -1,5 +1,12 @@
 # design-sync notes — Sunpebble Brand
 
+- 2026-07-05 re-sync: project 404 AGAIN under a fresh design authorization
+  (second occurrence — `c007f599-…` gone, account showed zero projects);
+  recreated as `00ec66e8-…`. Synced the refreshed `public/logo.svg`
+  (commit 05d0401) into `guidelines/logo.svg`; conventions.md re-validated
+  clean (all classes/tokens present). If this 404s a third time, the design
+  authorization itself is losing projects — worth raising with the user
+  before recreating yet again.
 - 2026-07-04 re-sync: the original project (`ac6f0caf-…`) came back 404 under a
   fresh design authorization (deleted or different account); recreated as
   `c007f599-…` and re-uploaded the unchanged bundle. Sources unchanged since
