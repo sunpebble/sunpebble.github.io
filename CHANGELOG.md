@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.2.0...sunpebble.github.io-v1.2.1) (2026-07-05)
+
+
+### Bug Fixes
+
+* use unique Pages artifact ([73238f6](https://github.com/sunpebble/sunpebble.github.io/commit/73238f60ca0a3586e0943b75ae9623f3e45b13ba))
+
 ## [1.2.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.1.1...sunpebble.github.io-v1.2.0) (2026-07-05)
 
 
