@@ -42,8 +42,8 @@
     6.91:1 / 5.90:1. BRAND.md is silent on dark secondary text.
   - light-mode `.badge` gold = `#8E6511`: Base.astro's `#B07E15` fails AA on
     white (3.60:1) and cream (3.36:1); the fix measures 5.22:1 / 4.88:1.
-    **The live site still has the failing value** — consider back-porting
-    `#8E6511` to `src/layouts/Base.astro` so site and bundle agree.
+    Back-ported to `src/layouts/Base.astro` on 2026-07-05 (`9d17ec5`) —
+    site and bundle now agree.
   - `color-scheme: light/dark` declarations added so native widgets follow
     the resolved theme, not the OS.
 - `guidelines/brand.md` = BRAND.md minus the "Canonical token files" section
