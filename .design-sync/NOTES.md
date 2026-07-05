@@ -4,9 +4,13 @@
   (second occurrence — `c007f599-…` gone, account showed zero projects);
   recreated as `00ec66e8-…`. Synced the refreshed `public/logo.svg`
   (commit 05d0401) into `guidelines/logo.svg`; conventions.md re-validated
-  clean (all classes/tokens present). If this 404s a third time, the design
-  authorization itself is losing projects — worth raising with the user
-  before recreating yet again.
+  clean (all classes/tokens present). Suspected root cause of both 404s:
+  two claude.ai accounts in play (kunish@sunpebblelabs.com vs
+  kunish.butt@gmail.com) — "404 + zero projects listed" means a different
+  account's project space, not deletion; the old projects likely still exist
+  under the other account. If a target 404s again with an empty project
+  list, ask the user which account the design authorization used BEFORE
+  recreating.
 - 2026-07-04 re-sync: the original project (`ac6f0caf-…`) came back 404 under a
   fresh design authorization (deleted or different account); recreated as
   `c007f599-…` and re-uploaded the unchanged bundle. Sources unchanged since
