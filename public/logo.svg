@@ -1,6 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#FFF6E8"/>
-  <circle cx="256" cy="212" r="118" fill="#F7B733"/>
-  <ellipse cx="256" cy="352" rx="152" ry="86" fill="#6E6E73"/>
-  <ellipse cx="214" cy="324" rx="36" ry="18" fill="#FFFFFF" opacity="0.35"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Sunpebble</title>
+  <rect width="512" height="512" rx="112" fill="#FFF6E8"/>
+  <circle cx="256" cy="198" r="112" fill="#F7B733"/>
+  <path fill="#232733" d="M86 338c0-58 73-98 169-98 102 0 171 39 171 98 0 60-66 98-170 98S86 398 86 338Z"/>
+  <path fill="#FFF6E8" opacity=".14" d="M139 314c33-27 84-42 142-39 39 2 75 11 103 26-31-29-76-45-129-45-67 0-119 22-116 58Z"/>
+  <rect x="149" y="339" width="56" height="24" rx="12" fill="#FFF6E8"/>
+  <rect x="226" y="339" width="96" height="24" rx="12" fill="#F7B733"/>
+  <rect x="343" y="339" width="44" height="24" rx="12" fill="#FFF6E8" opacity=".82"/>
 </svg>
