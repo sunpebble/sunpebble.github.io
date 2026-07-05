@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.2.1...sunpebble.github.io-v1.3.0) (2026-07-05)
+
+
+### Features
+
+* add Quarry pages ([a6dcd56](https://github.com/sunpebble/sunpebble.github.io/commit/a6dcd565b989bbe818a4b3bd19687505896bfb5c))
+
 ## [1.2.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.2.0...sunpebble.github.io-v1.2.1) (2026-07-05)
 
 
