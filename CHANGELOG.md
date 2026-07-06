@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.4.2...sunpebble.github.io-v1.5.0) (2026-07-06)
+
+
+### Features
+
+* add studio intro to homepage ([453d370](https://github.com/sunpebble/sunpebble.github.io/commit/453d370139edba5f2a6479caf555497005f34190))
+
 ## [1.4.2](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.4.1...sunpebble.github.io-v1.4.2) (2026-07-06)
 
 
