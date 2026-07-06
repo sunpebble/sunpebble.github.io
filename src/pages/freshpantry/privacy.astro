@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 <Base title="Fresh Pantry — Privacy Policy" doc>
   <nav><a href="/freshpantry/">← Fresh Pantry</a></nav>
   <h1>Privacy Policy</h1>
-  <p class="date">Effective July 3, 2026</p>
+  <p class="date">Effective July 7, 2026</p>
 
   <h2>The short version</h2>
   <p>Fresh Pantry stores your pantry data so your household can share it across devices.
@@ -26,10 +26,19 @@ import Base from '../../layouts/Base.astro';
      our server, where an AI model turns it into suggested inventory updates for you to review.
      The pasted text is used only to produce those suggestions.</p>
 
-  <h2>Crash reports</h2>
-  <p>If the app crashes, a technical crash report (device model, OS version, stack trace — not
-     your pantry contents) may be sent to Sentry, a crash-reporting service, so we can fix the
-     bug. No advertising or analytics SDKs are included.</p>
+  <h2>Stability and diagnostics</h2>
+  <p>In release builds, Fresh Pantry uses Sentry — a third-party stability service — to help us
+     find and fix problems. When something goes wrong, Sentry may receive:</p>
+  <ul>
+    <li><strong>Crash and hang reports</strong> — a technical stack trace, device model, and OS version.</li>
+    <li><strong>Performance traces</strong> — timing of app operations, with no personal content.</li>
+    <li><strong>Session replays</strong> — a recording of app screens from a small sample of sessions
+        (and when errors occur). <strong>All text and all images are masked</strong>, so your pantry
+        contents and pasted text are not visible in a replay.</li>
+    <li><strong>Structured logs and metrics</strong> — anonymized counters and diagnostic logs.</li>
+  </ul>
+  <p>Debug builds send nothing. This data is used only to improve stability — never for advertising
+     or sold to anyone.</p>
 
   <h2>Deleting your data</h2>
   <p>Delete your account from Settings and your synced data is removed from our servers.</p>

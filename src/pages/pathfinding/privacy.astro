@@ -14,18 +14,19 @@ import Base from '../../layouts/Base.astro';
   <p>In guest mode, your itineraries and preferences stay on your device. We receive no personal data.</p>
 
   <h2>Accounts</h2>
-  <p>If you sign in, we store your email address (or your Apple ID identifier) and an authentication
-     token. When you use email sign-in, your password is hashed before storage; we never see it in
-     plain text.</p>
+  <p>If you sign in, we store your email address (or your Apple ID or Google account identifier) and
+     an authentication token. When you sign in with email, your password is hashed with scrypt and a
+     unique per-account salt before storage; we never see or store it in plain text.</p>
 
   <h2>Your trips</h2>
-  <p>Itineraries you create — destinations, dates, notes, and the messages you send the AI planner —
-     are stored on our server under your account so they sync and can be shared. They're used only to
-     generate and store your plans.</p>
+  <p>Itineraries you create — destinations, dates, notes, the planning messages you send in chat, and
+     the guides the app writes for you — are stored on our server under your account so they sync and
+     can be shared with people you invite. They're used only to build and store your plans.</p>
 
   <h2>AI planning</h2>
-  <p>To build itineraries, your planning messages are sent to a language-model provider. We send only
-     the text needed to produce your plan, and require our provider not to retain it for training.</p>
+  <p>The planning messages you send in chat, and the relevant parts of your itinerary, are sent to
+     DeepSeek — the third-party AI service Pathfinding uses — to build and improve your plans and
+     guides. Only what's needed to produce them is sent, and it's used only for that purpose.</p>
 
   <h2>What we don't do</h2>
   <p>No ads. No selling your data. No third-party trackers. We don't use your trips for anything
