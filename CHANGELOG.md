@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.4.1...sunpebble.github.io-v1.4.2) (2026-07-06)
+
+
+### Bug Fixes
+
+* drop "pay once, no subscription" from site copy ([566c1d8](https://github.com/sunpebble/sunpebble.github.io/commit/566c1d8e4158886077552b0dae2e4a02d5f4394a))
+
 ## [1.4.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.4.0...sunpebble.github.io-v1.4.1) (2026-07-05)
 
 
