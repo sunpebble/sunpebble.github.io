@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.5.2...sunpebble.github.io-v1.6.0) (2026-07-06)
+
+
+### Features
+
+* add Cineslate and Pathfinding site pages ([e8c9152](https://github.com/sunpebble/sunpebble.github.io/commit/e8c9152295fb8d8f1b5f8446cd97ac46a3279dff))
+
 ## [1.5.2](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.5.1...sunpebble.github.io-v1.5.2) (2026-07-06)
 
 
