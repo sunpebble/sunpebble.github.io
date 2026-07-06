@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.6.0...sunpebble.github.io-v1.6.1) (2026-07-06)
+
+
+### Bug Fixes
+
+* disclose FreshPantry Sentry diagnostics and Pathfinding AI/auth details ([d15d8fc](https://github.com/sunpebble/sunpebble.github.io/commit/d15d8fc0414adbb7c66779c084c450f7564ddf20))
+
 ## [1.6.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.5.2...sunpebble.github.io-v1.6.0) (2026-07-06)
 
 
