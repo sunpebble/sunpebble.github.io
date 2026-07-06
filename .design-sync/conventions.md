@@ -63,9 +63,9 @@ night mode). `guidelines/logo.svg` is the brand mark.
     <p>Wind down without the doomscroll.</p>
     <span class="badge">Coming soon</span>
   </a>
-  <a class="cta" href="#">Get it once — $4.99</a>
+  <a class="cta" href="#">Get it — $4.99</a>
 </section>
 ```
 
-Tone in copy: plain and kind. Tagline: *Small, polished apps. Pay once, no
-subscription.* Quiet urgency (a color and a label), never alarm.
+Tone in copy: plain and kind. Tagline: *Small, polished apps.* Quiet urgency
+(a color and a label), never alarm.

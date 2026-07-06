@@ -37,7 +37,7 @@ Rules:
 
 - Name is **Sunpebble** (one word, capital S). "Sunpebble Labs" only as the
   legal entity (support email domain).
-- Tagline: *Small, polished apps. Pay once, no subscription.*
+- Tagline: *Small, polished apps.*
 - Tone: plain and kind. Quiet urgency (a color and a label), never alarm.
 
 ## Per-app accents
