@@ -8,6 +8,7 @@ import Base from '../layouts/Base.astro';
   <img class="logo" src="/logo.svg" alt="Sunpebble logo" />
   <h1>Sunpebble</h1>
   <p class="tagline">Small, polished apps.</p>
+  <p class="lede">A two-person indie studio — engineering by Kun, design &amp; product by Shuyuan. Every app is a pebble: small, smooth, and made to last.</p>
 
   <section>
     <h2 class="label">Apps</h2>
@@ -44,7 +45,10 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <footer>
-    A two-person studio — engineering by Kun, design &amp; product by Shuyuan.<br />
     <a href="https://github.com/sunpebble">GitHub</a>
   </footer>
 </Base>
+
+<style>
+  .lede { margin-top: 10px; color: var(--pebble); font-size: 1rem; }
+</style>
