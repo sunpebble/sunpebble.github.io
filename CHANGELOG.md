@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.5.0...sunpebble.github.io-v1.5.1) (2026-07-06)
+
+
+### Bug Fixes
+
+* fill out homepage footer with copyright and contact ([7c2ecaa](https://github.com/sunpebble/sunpebble.github.io/commit/7c2ecaadb64fed9d98e16a5b8bcaf4f00e090e16))
+
 ## [1.5.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.4.2...sunpebble.github.io-v1.5.0) (2026-07-06)
 
 
