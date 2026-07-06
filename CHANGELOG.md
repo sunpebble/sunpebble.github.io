@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.5.1...sunpebble.github.io-v1.5.2) (2026-07-06)
+
+
+### Bug Fixes
+
+* add Telegram contact ([d40cf2e](https://github.com/sunpebble/sunpebble.github.io/commit/d40cf2efe65253bc6758504a4990feea418fa4a7))
+
 ## [1.5.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.5.0...sunpebble.github.io-v1.5.1) (2026-07-06)
 
 
