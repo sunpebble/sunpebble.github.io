@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.6.1...sunpebble.github.io-v1.7.0) (2026-07-07)
+
+
+### Features
+
+* **homekeep:** add privacy policy page ([e015d98](https://github.com/sunpebble/sunpebble.github.io/commit/e015d98a09500f675a69f8e7de47ef0534118a6e))
+
 ## [1.6.1](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.6.0...sunpebble.github.io-v1.6.1) (2026-07-06)
 
 
