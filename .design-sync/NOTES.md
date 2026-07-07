@@ -1,5 +1,16 @@
 # design-sync notes — Sunpebble Brand
 
+- 2026-07-07 re-sync: THIRD 404 + zero-projects occurrence (`00ec66e8-…` gone).
+  A third account is now in play: this session's design authorization was under
+  `dev.sunpebblelabs@gmail.com` (vs the earlier kunish@sunpebblelabs.com /
+  kunish.butt@gmail.com pair), which confirms the account-mix-up hypothesis.
+  User chose to rebuild under the current account; recreated as
+  `eac7e7c2-4d92-4e20-8e44-6a63d0acf447` and re-uploaded the full bundle.
+  Content refresh in the same run: `guidelines/brand.md` re-derived from
+  BRAND.md (picks up Quarry personality row, Steady row, and the tagline
+  change from `566c1d8` — "Small, polished apps.", buy-once promise dropped);
+  README re-stitched from the already-updated conventions.md. Base.astro and
+  logo unchanged. Conventions re-validated clean (all classes/tokens present).
 - 2026-07-05 re-sync: project 404 AGAIN under a fresh design authorization
   (second occurrence — `c007f599-…` gone, account showed zero projects);
   recreated as `00ec66e8-…`. Synced the refreshed `public/logo.svg`
