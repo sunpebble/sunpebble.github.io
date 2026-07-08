@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.7.0...sunpebble.github.io-v1.8.0) (2026-07-08)
+
+
+### Features
+
+* **home:** redesign homepage as a React island ([53f6b7b](https://github.com/sunpebble/sunpebble.github.io/commit/53f6b7b46d20bd220d004f45de50144f8575e2c6))
+
 ## [1.7.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.6.1...sunpebble.github.io-v1.7.0) (2026-07-07)
 
 
