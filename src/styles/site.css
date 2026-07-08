@@ -1,4 +1,7 @@
-/* ===== Sunpebble homepage — ported from the Open Design redesign ===== */
+/* ===== Sunpebble shared design system =====
+   One stylesheet for the homepage and every subpage. Ported from the Open
+   Design homepage redesign, then extended with the subpage component
+   vocabulary (tagline / features / badge / doc / date / logo). */
 
 /* ===== Design tokens ===== */
 :root {
@@ -8,13 +11,10 @@
   --pebble: #6e6e73;
   --sun: #f7b733;
   --hairline: rgba(110, 110, 115, 0.15);
-  --shadow-sm: 0 1px 3px rgba(35, 39, 51, 0.08);
-  --shadow-lg: 0 12px 32px rgba(35, 39, 51, 0.12);
   --hover-warm: rgba(255, 255, 255, 0.45);
   --radius: 16px;
   --font-display: 'New York', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
   --max-width: 640px;
 
   /* Semantic aliases — the only tokens that change between light and dark.
@@ -24,6 +24,7 @@
   --text-secondary: var(--pebble);
   --border: var(--hairline);
   --hover: var(--hover-warm);
+  --badge-ink: #8e6511; /* WCAG-AA gold on cream/white */
   color-scheme: light;
 }
 
@@ -35,6 +36,7 @@
     --text-secondary: #9ea3b0;           /* WCAG-AA lightened pebble (6.9:1 on night) */
     --border: rgba(158, 163, 176, 0.22); /* hairline, lightened for dark */
     --hover: rgba(255, 255, 255, 0.05);  /* subtle row hover wash */
+    --badge-ink: var(--sun);             /* sun reads fine on night */
     color-scheme: dark;
   }
 }
@@ -54,6 +56,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+/* ===== Base elements ===== */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(28px, 4vw, 34px); font-weight: 600; }
+h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+
+a { color: inherit; }
 
 /* ===== Skip link (a11y) ===== */
 .skip-link {
@@ -90,19 +106,12 @@ body {
   to { opacity: 1; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .page { animation: none; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ===== Header ===== */
+/* ===== Header (shared across all pages) ===== */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   margin-bottom: 56px;
 }
 
@@ -145,7 +154,21 @@ body {
 
 .nav a:hover { color: var(--text); }
 
-/* ===== Hero — sparse, confident ===== */
+/* Contextual back link (bare <nav> on doc pages) */
+.page > nav,
+.doc > nav { margin-bottom: 28px; }
+
+nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+nav a:hover { color: var(--text); }
+
+/* ===== Hero (homepage) ===== */
 .hero {
   text-align: center;
   padding: 96px 0 120px;
@@ -155,20 +178,14 @@ body {
   width: 88px;
   height: 88px;
   border-radius: 22px;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .hero h1 {
-  font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 36px);
   font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: var(--text);
-  text-wrap: balance;
 }
 
 @media (max-width: 480px) {
@@ -179,6 +196,7 @@ body {
 section { margin-top: 56px; }
 
 .section-label {
+  font-family: var(--font-body);
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.08em;
@@ -187,7 +205,7 @@ section { margin-top: 56px; }
   margin-bottom: 24px;
 }
 
-/* ===== About — manifesto blockquote ===== */
+/* ===== About — manifesto blockquote (homepage) ===== */
 .about-intro {
   font-size: 17px;
   color: var(--text-secondary);
@@ -210,13 +228,12 @@ section { margin-top: 56px; }
   border-left: 2px solid var(--border);
 }
 
-/* ===== Apps — scroll-revealed hairline list ===== */
+/* ===== Apps — scroll-revealed hairline list (homepage) ===== */
 .apps-list {
   display: flex;
   flex-direction: column;
 }
 
-/* app-row is a link to the app page; strip default anchor styling */
 .app-row {
   position: relative;
   display: block;
@@ -274,14 +291,7 @@ section { margin-top: 56px; }
   margin-bottom: 8px;
 }
 
-.app-row h3 {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  text-wrap: balance;
-}
+.app-row h3 { font-size: 22px; }
 
 .app-row .status {
   font-size: 11px;
@@ -299,48 +309,165 @@ section { margin-top: 56px; }
   text-wrap: pretty;
 }
 
-/* ===== Footer ===== */
-.footer {
-  margin-top: 96px;
-  padding-top: 32px;
+/* ===== Subpage: app landing ===== */
+.logo {
+  display: block;
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  margin-bottom: 24px;
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 19px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 55ch;
+  text-wrap: pretty;
+}
+
+.features {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+}
+
+.features li {
+  padding: 20px 4px;
   border-top: 1px solid var(--border);
 }
 
-.footer p {
-  color: var(--text-secondary);
-  font-size: 14px;
-  letter-spacing: 0.01em;
+.features li:last-child { border-bottom: 1px solid var(--border); }
+
+.features li strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
 }
 
+.features li span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--badge-ink);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 8px 18px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+a.badge:hover {
+  background-color: var(--hover);
+  border-color: var(--text-secondary);
+}
+
+/* ===== Subpage: long-form docs (privacy / support) ===== */
+.doc h1 { margin-bottom: 6px; }
+
+.doc h2 {
+  margin-top: 34px;
+  margin-bottom: 8px;
+}
+
+.doc p {
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 14px;
+  max-width: 62ch;
+}
+
+.doc ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  max-width: 62ch;
+}
+
+.doc li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.doc li strong { font-weight: 600; }
+.doc em { font-style: italic; }
+
+.doc a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border);
+  transition: text-decoration-color 0.2s ease;
+}
+.doc a:hover { text-decoration-color: currentColor; }
+
+.date {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+/* ===== Footer (shared) ===== */
+footer {
+  margin-top: 80px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer a:hover { color: var(--text); }
+
+.footer { margin-top: 96px; padding-top: 32px; }
+.footer p { color: var(--text-secondary); letter-spacing: 0.01em; }
 .footer-links {
   display: flex;
   gap: 24px;
   margin-top: 16px;
   flex-wrap: wrap;
 }
-
-.footer-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 14px;
-  padding: 4px 0;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover { color: var(--text); }
+.footer-links a { padding: 4px 0; }
 
 /* ===== Focus visible (a11y) ===== */
 .nav a:focus-visible,
+nav a:focus-visible,
 .footer-links a:focus-visible,
 .app-row:focus-visible,
+.badge:focus-visible,
+.doc a:focus-visible,
 .header-brand:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* ===== Reduced motion — reveal all hairlines immediately ===== */
+/* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
+  .page { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
   .app-row::before,
   .app-row::after {
     transform: scaleX(1) !important;
