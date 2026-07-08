@@ -15,21 +15,23 @@ const favicon =
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#fff6e8" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff6e8" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161928" />
   <title>{title}</title>
   <link rel="icon" href={favicon} />
 
   <!-- OG / Twitter Card -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content="/og-image.svg" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content="A two-person indie studio making small, polished apps." />
-  <meta name="twitter:image" content="/og-image.svg" />
+  <meta name="twitter:image" content="/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
