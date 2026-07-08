@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.10.0...sunpebble.github.io-v1.11.0) (2026-07-08)
+
+
+### Features
+
+* **site:** route-level zh/en i18n + Open Design homepage refresh ([ea0da96](https://github.com/sunpebble/sunpebble.github.io/commit/ea0da963e06c28f522b01630702097e11f3e7c9f))
+
 ## [1.10.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.9.0...sunpebble.github.io-v1.10.0) (2026-07-08)
 
 
