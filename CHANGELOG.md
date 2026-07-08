@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.9.0...sunpebble.github.io-v1.10.0) (2026-07-08)
+
+
+### Features
+
+* **site:** unify all subpages with the homepage design system ([7375745](https://github.com/sunpebble/sunpebble.github.io/commit/7375745cd8266f08fb2975463e21c6dc0e7c4fcd))
+
 ## [1.9.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.8.0...sunpebble.github.io-v1.9.0) (2026-07-08)
 
 
