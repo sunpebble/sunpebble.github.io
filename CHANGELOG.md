@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.8.0...sunpebble.github.io-v1.9.0) (2026-07-08)
+
+
+### Features
+
+* **home:** add dark mode and switch Open Graph image to PNG ([0ad7048](https://github.com/sunpebble/sunpebble.github.io/commit/0ad7048b5e95ad97559c0e7d278dd5b6f2c7e0e5))
+
 ## [1.8.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.7.0...sunpebble.github.io-v1.8.0) (2026-07-08)
 
 
