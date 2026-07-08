@@ -1,64 +1,45 @@
 ---
-import Base from '../layouts/Base.astro';
+import Home from '../components/Home.tsx';
+import '../styles/home.css';
+
+const title = 'Sunpebble — Small, polished apps.';
+const description =
+  'A two-person indie studio making small, polished apps. Every app is a pebble: small, smooth, and made to last.';
+const favicon =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23FFF6E8'/%3E%3Ccircle cx='256' cy='198' r='112' fill='%23F7B733'/%3E%3Cpath fill='%23232733' d='M86 338c0-58 73-98 169-98 102 0 171 39 171 98 0 60-66 98-170 98S86 398 86 338Z'/%3E%3Cpath fill='%23FFF6E8' opacity='.14' d='M139 314c33-27 84-42 142-39 39 2 75 11 103 26-31-29-76-45-129-45-67 0-119 22-116 58Z'/%3E%3Crect x='149' y='339' width='56' height='24' rx='12' fill='%23FFF6E8'/%3E%3Crect x='226' y='339' width='96' height='24' rx='12' fill='%23F7B733'/%3E%3Crect x='343' y='339' width='44' height='24' rx='12' fill='%23FFF6E8' opacity='.82'/%3E%3C/svg%3E";
 ---
-<Base
-  title="Sunpebble — Small, polished apps."
-  description="Sunpebble is a two-person indie studio making small, polished apps."
->
-  <img class="logo" src="/logo.svg" alt="Sunpebble logo" />
-  <h1>Sunpebble</h1>
-  <p class="tagline">Small, polished apps.</p>
-  <p class="lede">A two-person indie studio — engineering by Kun, design &amp; product by Shuyuan. Every app is a pebble: small, smooth, and made to last.</p>
 
-  <section>
-    <h2 class="label">Apps</h2>
-    <a class="app" href="/dayroll/">
-      <h3>Dayroll</h3>
-      <p>The journal you never have to open — one tap, one line a day.</p>
-      <span class="badge">Coming soon</span>
-    </a>
-    <a class="app" href="/simmer/">
-      <h3>Simmer</h3>
-      <p>Kitchen timers that live in your Dynamic Island. Every pot, one glance.</p>
-      <span class="badge">Coming soon</span>
-    </a>
-    <a class="app" href="/sleeptab/">
-      <h3>Sleeptab</h3>
-      <p>Know how much sleep you owe yourself. Sleep debt from Apple Health.</p>
-      <span class="badge">Coming soon</span>
-    </a>
-    <a class="app" href="/steady/">
-      <h3>Steady</h3>
-      <p>Track blood pressure, glucose, meds, and symptoms. Built for doctor visits.</p>
-      <span class="badge">Coming soon</span>
-    </a>
-    <a class="app" href="/freshpantry/">
-      <h3>Fresh Pantry</h3>
-      <p>Your kitchen, remembered. Track what's in the fridge and cook it before it expires.</p>
-      <span class="badge">Coming soon</span>
-    </a>
-    <a class="app" href="/cineslate/">
-      <h3>Cineslate</h3>
-      <p>Your cinema slate, beautifully clear — discover film &amp; TV, keep your lists, play from Plex.</p>
-      <span class="badge">Coming soon</span>
-    </a>
-    <a class="app" href="/pathfinding/">
-      <h3>Pathfinding</h3>
-      <p>Plan a trip in plain language. Chat with an AI planner and see it on the map.</p>
-      <span class="badge">Coming soon</span>
-    </a>
-    <a class="app" href="/quarry/">
-      <h3>Quarry</h3>
-      <p>Professional database manager for macOS — native, fast, and encrypted-database ready.</p>
-      <span class="badge">In development</span>
-    </a>
-  </section>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#fff6e8" />
+  <title>{title}</title>
+  <link rel="icon" href={favicon} />
 
-  <footer>
-    © 2026 Sunpebble · <a href="https://github.com/sunpebble">GitHub</a> · <a href="https://t.me/sunpebble">Telegram</a> · <a href="mailto:support@sunpebblelabs.com">support@sunpebblelabs.com</a>
-  </footer>
-</Base>
+  <!-- OG / Twitter Card -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="/og-image.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content="A two-person indie studio making small, polished apps." />
+  <meta name="twitter:image" content="/og-image.svg" />
 
-<style>
-  .lede { margin-top: 10px; color: var(--pebble); font-size: 1rem; }
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <script is:inline>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <Home client:load />
+</body>
+</html>

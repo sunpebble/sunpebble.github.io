@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#FFF6E8"/>
+
+  <svg x="540" y="100" width="120" height="120" viewBox="0 0 512 512">
+    <rect width="512" height="512" rx="112" fill="#FFF6E8"/>
+    <circle cx="256" cy="198" r="112" fill="#F7B733"/>
+    <path fill="#232733" d="M86 338c0-58 73-98 169-98 102 0 171 39 171 98 0 60-66 98-170 98S86 398 86 338Z"/>
+    <path fill="#FFF6E8" opacity=".14" d="M139 314c33-27 84-42 142-39 39 2 75 11 103 26-31-29-76-45-129-45-67 0-119 22-116 58Z"/>
+    <rect x="149" y="339" width="56" height="24" rx="12" fill="#FFF6E8"/>
+    <rect x="226" y="339" width="96" height="24" rx="12" fill="#F7B733"/>
+    <rect x="343" y="339" width="44" height="24" rx="12" fill="#FFF6E8" opacity=".82"/>
+  </svg>
+
+  <text x="600" y="370" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="52" fill="#232733" letter-spacing="-1">
+    Small, polished apps.
+  </text>
+
+  <text x="600" y="430" text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="22" fill="#6E6E73" letter-spacing="3">
+    SUNPEBBLE
+  </text>
+</svg>
