@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { APPS, STRINGS, type Lang } from '../i18n';
 
 /** The Sunpebble studio logo, referenced by <use href="#sunpebble-logo"> below. */
 function LogoSymbol() {
@@ -17,40 +18,46 @@ function LogoSymbol() {
   );
 }
 
-type App = {
-  name: string;
-  slug: string;
-  status: string;
-  description: string;
-};
-
-/** Studio apps, in display order. Slugs map to the existing /{slug}/ Astro pages. */
-const APPS: App[] = [
-  { name: 'Dayroll', slug: 'dayroll', status: 'Coming soon', description: 'The journal you never have to open — one tap, one line a day.' },
-  { name: 'Simmer', slug: 'simmer', status: 'Coming soon', description: 'Kitchen timers that live in your Dynamic Island. Every pot, one glance.' },
-  { name: 'Sleeptab', slug: 'sleeptab', status: 'Coming soon', description: 'Know how much sleep you owe yourself. Sleep debt from Apple Health.' },
-  { name: 'Steady', slug: 'steady', status: 'Coming soon', description: 'Track blood pressure, glucose, meds, and symptoms. Built for doctor visits.' },
-  { name: 'Fresh Pantry', slug: 'freshpantry', status: 'Coming soon', description: "Your kitchen, remembered. Track what's in the fridge and cook it before it expires." },
-  { name: 'Cineslate', slug: 'cineslate', status: 'Coming soon', description: 'Your cinema slate, beautifully clear — discover film & TV, keep your lists, play from Plex.' },
-  { name: 'Pathfinding', slug: 'pathfinding', status: 'Coming soon', description: 'Plan a trip in plain language. Chat with an AI planner and see it on the map.' },
-  { name: 'Quarry', slug: 'quarry', status: 'In development', description: 'Professional database manager for macOS — native, fast, and encrypted-database ready.' },
-];
+/** Theme toggle — the click is handled by the delegated script in ThemeScript.astro,
+ *  so this is plain markup. aria-pressed is set by that script (kept out of JSX so
+ *  React re-renders never clobber the user's choice). Icons swap purely via CSS. */
+function ThemeToggle() {
+  return (
+    <button className="theme-toggle" type="button" aria-label="Toggle dark / light theme" title="Toggle theme">
+      <svg className="ico ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20 13.2A8 8 0 1 1 10.8 4a6.2 6.2 0 0 0 9.2 9.2Z" />
+      </svg>
+      <svg className="ico ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2" />
+        <line x1="12" y1="2.4" x2="12" y2="4.6" /><line x1="12" y1="19.4" x2="12" y2="21.6" />
+        <line x1="2.4" y1="12" x2="4.6" y2="12" /><line x1="19.4" y1="12" x2="21.6" y2="12" />
+        <line x1="5.1" y1="5.1" x2="6.7" y2="6.7" /><line x1="17.3" y1="17.3" x2="18.9" y2="18.9" />
+        <line x1="5.1" y1="18.9" x2="6.7" y2="17.3" /><line x1="17.3" y1="6.7" x2="18.9" y2="5.1" />
+      </svg>
+    </button>
+  );
+}
 
 /**
- * Scroll-revealed hairline list. Each row's top hairline animates in the first
- * time it enters the viewport — same interaction as the Open Design source,
- * driven by IntersectionObserver. Falls back to all-revealed when reduced
- * motion is requested or IntersectionObserver is unavailable.
+ * The homepage, rendered once per locale (route-level i18n). `lang` comes from the
+ * page that mounts it: `/` → 'en', `/zh/` → 'zh'. The language toggle is a plain
+ * link to the other locale's homepage — no client state, so hydration always matches.
  */
-function AppsList() {
-  const rowsRef = useRef<(HTMLAnchorElement | null)[]>([]);
-  const [revealed, setRevealed] = useState<Set<number>>(() => new Set());
+export default function Home({ lang }: { lang: Lang }) {
+  const t = STRINGS[lang];
+  const prefix = lang === 'zh' ? '/zh' : '';
+  const ruleRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Draw each section hairline in the first time it enters the viewport — same
+  // interaction as the Open Design source. Falls back to all-revealed when
+  // reduced motion is requested or IntersectionObserver is unavailable.
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const rules = ruleRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (!rules.length) return;
 
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced || !('IntersectionObserver' in window)) {
-      setRevealed(new Set(APPS.map((_, i) => i)));
+      rules.forEach((r) => r.classList.add('revealed'));
       return;
     }
 
@@ -58,74 +65,73 @@ function AppsList() {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          const idx = Number((entry.target as HTMLElement).dataset.idx);
-          setRevealed((prev) => new Set(prev).add(idx));
+          entry.target.classList.add('revealed');
           observer.unobserve(entry.target);
         });
       },
       { threshold: 0.15, rootMargin: '0px 0px -60px 0px' },
     );
 
-    rowsRef.current.forEach((el) => el && observer.observe(el));
+    rules.forEach((r) => observer.observe(r));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="apps-list">
-      {APPS.map((app, i) => (
-        <a
-          key={app.slug}
-          ref={(el) => { rowsRef.current[i] = el; }}
-          data-idx={i}
-          className={`app-row${revealed.has(i) ? ' revealed' : ''}`}
-          href={`/${app.slug}/`}
-        >
-          <div className="app-row-head">
-            <h3>{app.name}</h3>
-            <span className="status">{app.status}</span>
-          </div>
-          <p>{app.description}</p>
-        </a>
-      ))}
-    </div>
-  );
-}
-
-export default function Home() {
-  return (
     <>
       <LogoSymbol />
 
-      <a href="#main-content" className="skip-link">Skip to content</a>
+      <a href="#main-content" className="skip-link">{t.skip}</a>
 
       <main id="main-content" className="page">
         <header className="header">
-          <a href="/" className="header-brand">
+          <a href={`${prefix}/`} className="header-brand">
             <svg role="img" aria-label="Sunpebble"><use href="#sunpebble-logo" /></svg>
             <span>Sunpebble</span>
           </a>
-          <nav className="nav" aria-label="Studio navigation">
-            <a href="#apps">Apps</a>
-            <a href="#about">About</a>
-          </nav>
+          <div className="header-tools">
+            <nav className="nav" aria-label={lang === 'zh' ? '站点导航' : 'Studio navigation'}>
+              <a href="#apps">{t.navApps}</a>
+              <a href="#about">{t.navAbout}</a>
+            </nav>
+            <a className="lang-toggle" href={lang === 'zh' ? '/' : '/zh/'} aria-label={t.switchAria} title={t.switchAria}>
+              {t.switchTo}
+            </a>
+            <ThemeToggle />
+          </div>
         </header>
 
         <section className="hero">
-          <svg className="hero-logo" role="img" aria-label="Sunpebble logo">
+          <svg className="hero-logo" role="img" aria-label="Sunpebble">
             <use href="#sunpebble-logo" />
           </svg>
-          <h1>Small, polished apps.</h1>
+          <h1>{t.heroTagline}</h1>
+          <div className="hero-rule" aria-hidden="true" />
+          <p className="hero-lede">{t.heroLede}</p>
         </section>
 
         <section className="about" id="about">
-          <h2 className="section-label">About</h2>
-          <p className="about-intro">A two-person indie studio — engineering by Kun, design &amp; product by Shuyuan.</p>
-          <blockquote className="manifesto">Every app is a pebble: small, smooth, and made to last.</blockquote>
+          <div className="rule" aria-hidden="true" ref={(el) => { ruleRefs.current[0] = el; }} />
+          <h2 className="section-label">{t.aboutLabel}</h2>
+          <p className="about-intro">{t.aboutIntro}</p>
+          <blockquote className="manifesto">
+            {t.manifesto.flatMap((line, i) => (i === 0 ? [line] : [<br key={i} />, line]))}
+          </blockquote>
         </section>
 
         <section className="apps" id="apps">
-          <h2 className="section-label">Apps</h2>
-          <AppsList />
+          <div className="rule" aria-hidden="true" ref={(el) => { ruleRefs.current[1] = el; }} />
+          <h2 className="section-label">{t.appsLabel}</h2>
+          <div className="apps-list">
+            {APPS.map((app) => (
+              <a key={app.slug} className="app-card" href={`${prefix}/${app.slug}/`}>
+                <div className="app-card-head">
+                  <h3>{app.name}</h3>
+                  <span className="status">{app.dev ? t.statusDev : t.statusSoon}</span>
+                </div>
+                <p className="desc">{app.desc[lang]}</p>
+              </a>
+            ))}
+          </div>
         </section>
 
         <footer className="footer">

@@ -14,29 +14,53 @@
   --hover-warm: rgba(255, 255, 255, 0.45);
   --radius: 16px;
   --font-display: 'New York', 'Iowan Old Style', Georgia, serif;
-  --font-body: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Albert Sans', system-ui, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --max-width: 640px;
 
-  /* Semantic aliases — the only tokens that change between light and dark.
+  /* Semantic aliases — the only tokens that flip between light and dark.
      The raw palette tokens above stay fixed to their true colors. */
   --bg: var(--cream);
+  --surface: var(--white);
   --text: var(--ink);
   --text-secondary: var(--pebble);
   --border: var(--hairline);
   --hover: var(--hover-warm);
   --badge-ink: #8e6511; /* WCAG-AA gold on cream/white */
+  --shadow-sm: 0 1px 3px rgba(35, 39, 51, 0.08);
+  --shadow-lg: 0 12px 32px rgba(35, 39, 51, 0.12);
   color-scheme: light;
 }
 
-/* ===== Dark mode — follows the OS / browser preference ===== */
+/* ===== Dark mode — warm, on-brand (not cold grey) =====
+   Two triggers share one set of values:
+   • :root[data-theme="dark"]      — explicit choice via the header toggle
+   • prefers-color-scheme: dark    — OS default, until the user picks a theme
+   ponytail: the value block is duplicated once across the two selectors —
+   CSS custom properties can't be shared across a media-query boundary. */
+:root[data-theme='dark'] {
+  --bg: #1a1714;                        /* warm near-black canvas */
+  --surface: #25221d;                  /* raised cards on the dark canvas */
+  --text: #f2eadd;                     /* warm off-white primary text */
+  --text-secondary: #9a9388;           /* secondary text (~5.8:1 on canvas) */
+  --border: rgba(242, 234, 221, 0.12);
+  --hover: rgba(255, 255, 255, 0.05);
+  --badge-ink: var(--sun);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161928;                       /* brand night */
-    --text: var(--cream);                /* cream text on night */
-    --text-secondary: #9ea3b0;           /* WCAG-AA lightened pebble (6.9:1 on night) */
-    --border: rgba(158, 163, 176, 0.22); /* hairline, lightened for dark */
-    --hover: rgba(255, 255, 255, 0.05);  /* subtle row hover wash */
-    --badge-ink: var(--sun);             /* sun reads fine on night */
+  :root:not([data-theme='light']) {
+    --bg: #1a1714;
+    --surface: #25221d;
+    --text: #f2eadd;
+    --text-secondary: #9a9388;
+    --border: rgba(242, 234, 221, 0.12);
+    --hover: rgba(255, 255, 255, 0.05);
+    --badge-ink: var(--sun);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
     color-scheme: dark;
   }
 }
@@ -51,7 +75,7 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -154,6 +178,56 @@ a { color: inherit; }
 
 .nav a:hover { color: var(--text); }
 
+/* Header tools cluster (nav + theme toggle) */
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  transition: color 0.3s ease;
+}
+.theme-toggle:hover { color: var(--text); }
+.theme-toggle:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.theme-toggle .ico { display: block; }
+.theme-toggle .ico-sun { display: none; }
+:root[data-theme='dark'] .theme-toggle .ico-sun { display: block; }
+:root[data-theme='dark'] .theme-toggle .ico-moon { display: none; }
+
+/* Language toggle (中 / EN) — compact text button, aligned with the theme toggle */
+.lang-toggle {
+  min-width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  transition: color 0.3s ease;
+}
+.lang-toggle:hover { color: var(--text); }
+.lang-toggle:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
 /* Contextual back link (bare <nav> on doc pages) */
 .page > nav,
 .doc > nav { margin-bottom: 28px; }
@@ -171,7 +245,7 @@ nav a:hover { color: var(--text); }
 /* ===== Hero (homepage) ===== */
 .hero {
   text-align: center;
-  padding: 96px 0 120px;
+  padding: 96px 0 112px;
 }
 
 .hero-logo {
@@ -183,9 +257,32 @@ nav a:hover { color: var(--text); }
 }
 
 .hero h1 {
-  font-size: clamp(28px, 5vw, 36px);
+  font-size: clamp(36px, 7vw, 48px);
   font-weight: 400;
   letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Hairline that draws itself in under the tagline (once, on load) */
+.hero-rule {
+  width: 72px;
+  height: 1px;
+  background: var(--border);
+  margin: 32px auto 0;
+  transform-origin: center;
+}
+.js .hero-rule { animation: drawIn 0.8s ease-out 0.35s both; }
+
+@keyframes drawIn {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.hero-lede {
+  margin-top: 24px;
+  font-size: 17px;
+  color: var(--text-secondary);
+  text-wrap: pretty;
 }
 
 @media (max-width: 480px) {
@@ -194,6 +291,20 @@ nav a:hover { color: var(--text); }
 
 /* ===== Section ===== */
 section { margin-top: 56px; }
+
+/* Drawn-in section rule — reveals the first time it scrolls into view */
+.rule {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 24px;
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+.js .rule {
+  transform: scaleX(0);
+  transition: transform 0.6s ease-out;
+}
+.js .rule.revealed { transform: scaleX(1); }
 
 .section-label {
   font-family: var(--font-body);
@@ -205,107 +316,80 @@ section { margin-top: 56px; }
   margin-bottom: 24px;
 }
 
-/* ===== About — manifesto blockquote (homepage) ===== */
+/* ===== About — intro + de-bordered manifesto (homepage) ===== */
 .about-intro {
   font-size: 17px;
-  color: var(--text-secondary);
-  line-height: 1.6;
+  color: var(--text);
+  line-height: 1.8;
   max-width: 55ch;
   text-wrap: pretty;
-  margin-bottom: 32px;
 }
 
 .manifesto {
+  margin-top: 32px;
   font-family: var(--font-display);
-  font-size: clamp(22px, 4vw, 28px);
+  font-size: clamp(24px, 4.5vw, 30px);
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.45;
   letter-spacing: -0.01em;
   color: var(--text);
-  max-width: 55ch;
   text-wrap: balance;
-  padding-left: 24px;
-  border-left: 2px solid var(--border);
 }
 
-/* ===== Apps — scroll-revealed hairline list (homepage) ===== */
+/* ===== Apps — bilingual cards raised on the canvas (homepage) =====
+   Cards stay links to each app's /{slug}/ page (existing navigation), styled
+   as the redesign's raised white cards. */
 .apps-list {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
-.app-row {
-  position: relative;
+.app-card {
   display: block;
-  padding: 24px 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
   color: inherit;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.app-row::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--border);
-  transform: scaleX(1);
-  transform-origin: left center;
+.app-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
-.js .app-row::before {
-  transform: scaleX(0);
-  transition: transform 0.5s ease-out;
-}
-
-.js .app-row.revealed::before { transform: scaleX(1); }
-
-.app-row:last-child::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--border);
-  transform: scaleX(1);
-  transform-origin: left center;
-}
-
-.js .app-row:last-child::after {
-  transform: scaleX(0);
-  transition: transform 0.5s ease-out 0.08s;
-}
-
-.js .app-row:last-child.revealed::after { transform: scaleX(1); }
-
-.app-row:hover { background-color: var(--hover); }
-
-.app-row-head {
+.app-card-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.app-row h3 { font-size: 22px; }
+.app-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
 
-.app-row .status {
+.app-card .status {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  font-weight: 500;
   color: var(--text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.app-row p {
-  color: var(--text-secondary);
+.app-card .desc {
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.7;
+  color: var(--text);
   text-wrap: pretty;
 }
 
@@ -452,7 +536,7 @@ footer a:hover { color: var(--text); }
 .nav a:focus-visible,
 nav a:focus-visible,
 .footer-links a:focus-visible,
-.app-row:focus-visible,
+.app-card:focus-visible,
 .badge:focus-visible,
 .doc a:focus-visible,
 .header-brand:focus-visible {
@@ -464,13 +548,13 @@ nav a:focus-visible,
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   .page { animation: none; }
+  .js .hero-rule { animation: none; }
+  .js .rule {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-  }
-  .app-row::before,
-  .app-row::after {
-    transform: scaleX(1) !important;
-    transition: none !important;
   }
 }

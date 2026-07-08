@@ -1,0 +1,60 @@
+---
+/*
+ * Site-wide theme bootstrap + toggle, shared by the homepage (React island)
+ * and every static subpage. Rendered inside <head> so it resolves the theme
+ * before first paint (no flash), then wires the toggle via event delegation
+ * so it works for the React-rendered button too — no per-page JS needed.
+ */
+---
+<script is:inline>
+  (function () {
+    var KEY = 'sunpebble-theme', DARK = '#1a1714', LIGHT = '#fff6e8';
+    var doc = document.documentElement;
+
+    function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function current() { return doc.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
+    function syncMeta() {
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', current() === 'dark' ? DARK : LIGHT);
+    }
+    function syncButtons() {
+      var pressed = String(current() === 'dark');
+      document.querySelectorAll('.theme-toggle').forEach(function (b) {
+        b.setAttribute('aria-pressed', pressed);
+      });
+    }
+
+    // 1) No-flash: resolve theme before the body paints.
+    var t = stored();
+    if (t !== 'dark' && t !== 'light') {
+      t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    doc.setAttribute('data-theme', t);
+    syncMeta();
+
+    // 2) Toggle via delegation — catches the React button and static buttons alike.
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('.theme-toggle') : null;
+      if (!btn) return;
+      var next = current() === 'dark' ? 'light' : 'dark';
+      doc.setAttribute('data-theme', next);
+      try { localStorage.setItem(KEY, next); } catch (_) {}
+      syncMeta();
+      syncButtons();
+    });
+
+    // 3) Sync button state once the DOM is ready; follow the system while
+    //    the user hasn't made an explicit choice.
+    if (document.readyState !== 'loading') syncButtons();
+    else document.addEventListener('DOMContentLoaded', syncButtons);
+
+    try {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (stored()) return;
+        doc.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        syncMeta();
+        syncButtons();
+      });
+    } catch (_) {}
+  })();
+</script>
