@@ -35,7 +35,6 @@
    Two triggers share one set of values:
    • :root[data-theme="dark"]      — explicit choice via the header toggle
    • prefers-color-scheme: dark    — OS default, until the user picks a theme
-   ponytail: the value block is duplicated once across the two selectors —
    CSS custom properties can't be shared across a media-query boundary. */
 :root[data-theme='dark'] {
   --bg: #1a1714;                        /* warm near-black canvas */
