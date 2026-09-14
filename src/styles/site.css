@@ -523,6 +523,7 @@ footer a:hover { color: var(--text); }
 
 .footer { margin-top: 96px; padding-top: 32px; }
 .footer p { color: var(--text-secondary); letter-spacing: 0.01em; }
+.footer-address { margin-top: 8px; font-style: normal; }
 .footer-links {
   display: flex;
   gap: 24px;

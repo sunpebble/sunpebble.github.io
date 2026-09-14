@@ -135,8 +135,13 @@ export default function Home({ lang }: { lang: Lang }) {
         </section>
 
         <footer className="footer">
-          <p>&copy; 2026 Sunpebble</p>
+          <p>&copy; 2026 Sunpebble, LLC</p>
+          <address className="footer-address">
+            131 Continental Dr Suite 305<br />
+            Newark, DE, 19713 US
+          </address>
           <div className="footer-links">
+            <a href={`${prefix}/privacy-policy/`}>{t.privacyPolicy}</a>
             <a href="https://github.com/sunpebble">GitHub</a>
             <a href="https://t.me/sunpebble">Telegram</a>
             <a href="mailto:support@sunpebblelabs.com">support@sunpebblelabs.com</a>

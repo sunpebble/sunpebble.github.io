@@ -17,6 +17,7 @@ type Strings = {
   skip: string;
   navApps: string;
   navAbout: string;
+  privacyPolicy: string;
   heroTagline: string;
   heroLede: string;
   aboutLabel: string;
@@ -35,6 +36,7 @@ export const STRINGS: Record<Lang, Strings> = {
     skip: '跳到主要内容',
     navApps: '应用',
     navAbout: '关于',
+    privacyPolicy: '隐私政策',
     heroTagline: '小而精的应用。',
     heroLede: '两个人的独立工作室，做小而精的应用。',
     aboutLabel: '关于',
@@ -50,6 +52,7 @@ export const STRINGS: Record<Lang, Strings> = {
     skip: 'Skip to content',
     navApps: 'Apps',
     navAbout: 'About',
+    privacyPolicy: 'Privacy Policy',
     heroTagline: 'Small, polished apps.',
     heroLede: 'A two-person indie studio making small, polished apps.',
     aboutLabel: 'About',
