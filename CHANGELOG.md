@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.12.0...sunpebble.github.io-v1.13.0) (2026-09-14)
+
+
+### Features
+
+* **site:** redesign with spacious layouts and large typography ([c9bb378](https://github.com/sunpebble/sunpebble.github.io/commit/c9bb37887736df259945f85dab431e4951fd0a99))
+
 ## [1.12.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.11.0...sunpebble.github.io-v1.12.0) (2026-09-14)
 
 
