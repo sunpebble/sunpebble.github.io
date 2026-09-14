@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.11.0...sunpebble.github.io-v1.12.0) (2026-09-14)
+
+
+### Features
+
+* **site:** add privacy policy and LLC footer details ([5a005ae](https://github.com/sunpebble/sunpebble.github.io/commit/5a005aec3a837fdb34cb145dd1b6c2d1c4044149))
+
 ## [1.11.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.10.0...sunpebble.github.io-v1.11.0) (2026-07-08)
 
 
