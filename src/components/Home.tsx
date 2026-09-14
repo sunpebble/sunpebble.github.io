@@ -1,153 +1,94 @@
-import { useEffect, useRef } from 'react';
 import { APPS, STRINGS, type Lang } from '../i18n';
 
-/** The Sunpebble studio logo, referenced by <use href="#sunpebble-logo"> below. */
-function LogoSymbol() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }} aria-hidden="true">
-      <symbol id="sunpebble-logo" viewBox="0 0 512 512">
-        <rect width="512" height="512" rx="112" fill="#FFF6E8" />
-        <circle cx="256" cy="198" r="112" fill="#F7B733" />
-        <path fill="#232733" d="M86 338c0-58 73-98 169-98 102 0 171 39 171 98 0 60-66 98-170 98S86 398 86 338Z" />
-        <path fill="#FFF6E8" opacity=".14" d="M139 314c33-27 84-42 142-39 39 2 75 11 103 26-31-29-76-45-129-45-67 0-119 22-116 58Z" />
-        <rect x="149" y="339" width="56" height="24" rx="12" fill="#FFF6E8" />
-        <rect x="226" y="339" width="96" height="24" rx="12" fill="#F7B733" />
-        <rect x="343" y="339" width="44" height="24" rx="12" fill="#FFF6E8" opacity=".82" />
-      </symbol>
+function Arrow({ diagonal = false }: { diagonal?: boolean }) {
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={diagonal ? 'M5 19 19 5M5 5h14v14' : 'M4 12h16m-7-7 7 7-7 7'} /></svg>;
+}
+
+/** Monochrome marks keep the collection focused on each app's purpose. */
+function AppIcon({ slug }: { slug: string }) {
+  const paths: Record<string, string> = {
+    dayroll: 'M7 3h10v18l-2-1.5L12 21l-3-1.5L7 21V3Zm3 5h4m-4 4h4m-4 4h2',
+    simmer: 'M5 10h14v5a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6v-5Zm-3 2h3m14 0h3M9 7c-2-2 2-3 0-5m6 5c-2-2 2-3 0-5',
+    sleeptab: 'M20 14A8.5 8.5 0 0 1 10 3a8.5 8.5 0 1 0 10 11ZM16 3v4m-2-2h4',
+    steady: 'M20.8 5.6a5.2 5.2 0 0 0-7.3 0L12 7.1l-1.5-1.5a5.2 5.2 0 0 0-7.3 7.3L12 21l8.8-8.1a5.2 5.2 0 0 0 0-7.3ZM4 12h4l2-3 3 7 2-4h5',
+    freshpantry: 'M19 3C9 2 3 7 5 14c1 4 6 5 9 3 5-3 5-9 5-14ZM4 21 15 9',
+    cineslate: 'M3 10h18v11H3V10Zm0 0L2 5l18-3 1 5-18 3Zm3-6 3 4m3-5 3 4m3-5 3 4M10 13l5 3-5 3v-6Z',
+    pathfinding: 'M12 3v18M5 5h12l3 3-3 3H5V5Zm14 9H7l-3 3 3 3h12v-6Z',
+    quarry: 'M4 6c0-2 3.6-3 8-3s8 1 8 3-3.6 3-8 3-8-1-8-3Zm0 0v6c0 2 3.6 3 8 3s8-1 8-3V6M4 12v6c0 2 3.6 3 8 3s8-1 8-3v-6',
+  };
+  return <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[slug]} /></svg>;
+}
+
+function SunAndPebble() {
+  return <div className="hero-art" aria-hidden="true">
+    <svg className="pebble-art" viewBox="0 0 400 400" fill="none">
+      <circle className="art-sun" cx="220" cy="145" r="105" />
+      <ellipse className="art-shadow" cx="201" cy="350" rx="133" ry="9" />
+      <path className="art-stone" d="M53 280c0-54 62-99 143-99 87 0 150 45 150 99 0 46-57 68-146 68-94 0-147-24-147-68Z" />
+      <path className="art-highlight" d="M83 256c23-36 80-57 130-49 37 5 66 16 83 32-29-17-60-22-96-21-49 0-84 12-117 38Z" />
+      <rect className="art-slot" x="105" y="283" width="46" height="16" rx="8" />
+      <rect className="art-sun" x="165" y="283" width="76" height="16" rx="8" />
+      <rect className="art-slot" x="255" y="283" width="34" height="16" rx="8" />
     </svg>
-  );
+    <span className="art-caption">A little sun. A little pebble.</span>
+  </div>;
 }
 
-/** Theme toggle — the click is handled by the delegated script in ThemeScript.astro,
- *  so this is plain markup. aria-pressed is set by that script (kept out of JSX so
- *  React re-renders never clobber the user's choice). Icons swap purely via CSS. */
-function ThemeToggle() {
-  return (
-    <button className="theme-toggle" type="button" aria-label="Toggle dark / light theme" title="Toggle theme">
-      <svg className="ico ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M20 13.2A8 8 0 1 1 10.8 4a6.2 6.2 0 0 0 9.2 9.2Z" />
-      </svg>
-      <svg className="ico ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4.2" />
-        <line x1="12" y1="2.4" x2="12" y2="4.6" /><line x1="12" y1="19.4" x2="12" y2="21.6" />
-        <line x1="2.4" y1="12" x2="4.6" y2="12" /><line x1="19.4" y1="12" x2="21.6" y2="12" />
-        <line x1="5.1" y1="5.1" x2="6.7" y2="6.7" /><line x1="17.3" y1="17.3" x2="18.9" y2="18.9" />
-        <line x1="5.1" y1="18.9" x2="6.7" y2="17.3" /><line x1="17.3" y1="6.7" x2="18.9" y2="5.1" />
-      </svg>
-    </button>
-  );
-}
-
-/**
- * The homepage, rendered once per locale (route-level i18n). `lang` comes from the
- * page that mounts it: `/` → 'en', `/zh/` → 'zh'. The language toggle is a plain
- * link to the other locale's homepage — no client state, so hydration always matches.
- */
+/** Static server-rendered content. Theme switching is handled by ThemeScript. */
 export default function Home({ lang }: { lang: Lang }) {
   const t = STRINGS[lang];
   const prefix = lang === 'zh' ? '/zh' : '';
-  const ruleRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Draw each section hairline in the first time it enters the viewport — same
-  // interaction as the Open Design source. Falls back to all-revealed when
-  // reduced motion is requested or IntersectionObserver is unavailable.
-  useEffect(() => {
-    const rules = ruleRefs.current.filter(Boolean) as HTMLDivElement[];
-    if (!rules.length) return;
-
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced || !('IntersectionObserver' in window)) {
-      rules.forEach((r) => r.classList.add('revealed'));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' },
-    );
-
-    rules.forEach((r) => observer.observe(r));
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <>
-      <LogoSymbol />
-
-      <a href="#main-content" className="skip-link">{t.skip}</a>
-
-      <main id="main-content" className="page">
-        <header className="header">
-          <a href={`${prefix}/`} className="header-brand">
-            <svg role="img" aria-label="Sunpebble"><use href="#sunpebble-logo" /></svg>
-            <span>Sunpebble</span>
-          </a>
-          <div className="header-tools">
-            <nav className="nav" aria-label={lang === 'zh' ? '站点导航' : 'Studio navigation'}>
-              <a href="#apps">{t.navApps}</a>
-              <a href="#about">{t.navAbout}</a>
-            </nav>
-            <a className="lang-toggle" href={lang === 'zh' ? '/' : '/zh/'} aria-label={t.switchAria} title={t.switchAria}>
-              {t.switchTo}
-            </a>
-            <ThemeToggle />
-          </div>
-        </header>
-
-        <section className="hero">
-          <svg className="hero-logo" role="img" aria-label="Sunpebble">
-            <use href="#sunpebble-logo" />
-          </svg>
-          <h1>{t.heroTagline}</h1>
-          <div className="hero-rule" aria-hidden="true" />
+  return <>
+    <main id="main-content">
+      <section className="hero" aria-labelledby="hero-title">
+        <p className="eyebrow"><span className="sun-dot" />{t.studioLabel}</p>
+        <div className="hero-main">
+          <h1 id="hero-title"><span>{t.heroLines[0]}</span><span className="hero-second-line">{t.heroLines[1]}<span className="title-dot">{lang === 'zh' ? '。' : '.'}</span></span></h1>
+          <SunAndPebble />
+        </div>
+        <div className="hero-bottom">
           <p className="hero-lede">{t.heroLede}</p>
-        </section>
-
-        <section className="about" id="about">
-          <div className="rule" aria-hidden="true" ref={(el) => { ruleRefs.current[0] = el; }} />
-          <h2 className="section-label">{t.aboutLabel}</h2>
-          <p className="about-intro">{t.aboutIntro}</p>
-          <blockquote className="manifesto">
-            {t.manifesto.flatMap((line, i) => (i === 0 ? [line] : [<br key={i} />, line]))}
-          </blockquote>
-        </section>
-
-        <section className="apps" id="apps">
-          <div className="rule" aria-hidden="true" ref={(el) => { ruleRefs.current[1] = el; }} />
-          <h2 className="section-label">{t.appsLabel}</h2>
-          <div className="apps-list">
-            {APPS.map((app) => (
-              <a key={app.slug} className="app-card" href={`${prefix}/${app.slug}/`}>
-                <div className="app-card-head">
-                  <h3>{app.name}</h3>
-                  <span className="status">{app.dev ? t.statusDev : t.statusSoon}</span>
-                </div>
-                <p className="desc">{app.desc[lang]}</p>
-              </a>
-            ))}
+          <a className="text-link hero-link" href="#apps">{t.exploreApps}<span className="circle-arrow"><Arrow /></span></a>
+        </div>
+      </section>
+      <section className="apps" id="apps" aria-labelledby="apps-title">
+        <div className="section-heading">
+          <p className="eyebrow"><span className="section-index">01 /</span>{t.appsLabel}<span className="item-count">{String(APPS.length).padStart(2, '0')}</span></p>
+          <div className="section-heading-main"><h2 id="apps-title">{t.appsHeading}</h2><p>{t.appsIntro}</p></div>
+        </div>
+        <div className="apps-list">
+          {APPS.map((app, i) => <a key={app.slug} className="app-card" href={`${prefix}/${app.slug}/`}>
+            <span className="app-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span className="app-icon"><AppIcon slug={app.slug} /></span>
+            <h3>{app.name}</h3>
+            <p className="app-desc">{app.desc[lang]}</p>
+            <span className={`status${app.dev ? ' status-dev' : ''}`}><span />{app.dev ? t.statusDev : t.statusSoon}</span>
+            <span className="app-arrow"><Arrow diagonal /></span>
+          </a>)}
+        </div>
+      </section>
+      <section className="about" id="about" aria-labelledby="about-title">
+        <p className="eyebrow"><span className="section-index">02 /</span>{t.aboutLabel}</p>
+        <div className="about-grid">
+          <h2 id="about-title">{t.aboutHeading[0]}<br /><span>{t.aboutHeading[1]}</span></h2>
+          <div className="about-copy">
+            <p className="manifesto">{t.manifesto.join(' ')}</p>
+            <p className="about-intro">{t.aboutIntro}</p>
+            <div className="makers"><span><span className="maker-dot">K</span>Kun<span className="maker-role">{t.engineering}</span></span><span><span className="maker-dot">S</span>Shuyuan<span className="maker-role">{t.design}</span></span></div>
           </div>
-        </section>
-
-        <footer className="footer">
-          <p>&copy; 2026 Sunpebble, LLC</p>
-          <address className="footer-address">
-            131 Continental Dr Suite 305<br />
-            Newark, DE, 19713 US
-          </address>
-          <div className="footer-links">
-            <a href={`${prefix}/privacy-policy/`}>{t.privacyPolicy}</a>
-            <a href="https://github.com/sunpebble">GitHub</a>
-            <a href="https://t.me/sunpebble">Telegram</a>
-            <a href="mailto:support@sunpebblelabs.com">support@sunpebblelabs.com</a>
-          </div>
-        </footer>
-      </main>
-    </>
-  );
+        </div>
+      </section>
+    </main>
+    <footer className="footer">
+      <div className="footer-top">
+        <div><p className="eyebrow">{t.contactLabel}</p><a className="contact-link" href="mailto:support@sunpebblelabs.com">{t.sayHello}<Arrow diagonal /></a></div>
+        <a className="footer-email" href="mailto:support@sunpebblelabs.com">support@sunpebblelabs.com<Arrow diagonal /></a>
+      </div>
+      <div className="footer-bottom">
+        <div className="footer-company"><p>&copy; 2026 Sunpebble, LLC</p><address>131 Continental Dr Suite 305<br />Newark, DE, 19713 US</address></div>
+        <div className="footer-links"><a href={`${prefix}/privacy-policy/`}>{t.privacyPolicy}</a><a href="https://github.com/sunpebble">GitHub<Arrow diagonal /></a><a href="https://t.me/sunpebble">Telegram<Arrow diagonal /></a></div>
+        <a className="back-top" href="#top">{t.backTop}<Arrow /></a>
+      </div>
+    </footer>
+  </>;
 }

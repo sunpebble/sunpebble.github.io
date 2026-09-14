@@ -26,8 +26,9 @@ Rules:
 
 ## Typography
 
-- **Web:** system stack (`-apple-system, "SF Pro Text", …`) for body,
-  `"New York", Georgia, serif` for headings.
+- **Web:** Albert Sans for headings and body, with native system and Chinese
+  sans-serif fallbacks. Large, medium-weight headings, tight display tracking,
+  and generous line height for descriptions and documents.
 - **Apps:** SF system fonts. Rounded design by default (Simmer, Sleeptab);
   Dayroll uses monospaced as its receipt-paper personality. Fresh Pantry
   bundles Plus Jakarta Sans + Manrope (its "homey" voice) — humanist and
@@ -39,6 +40,23 @@ Rules:
   legal entity (support email domain).
 - Tagline: *Small, polished apps.*
 - Tone: plain and kind. Quiet urgency (a color and a label), never alarm.
+
+## Website visual system
+
+The studio website uses a quieter interpretation of the app palette: paper
+`#F7F7F2`, charcoal `#252822`, muted olive `#686C62`, and sun `#F4CC49`.
+Dark mode uses `#191B18` with `#F1F2E9` text. Existing app icons retain their
+original brand colors.
+
+- A 1280px maximum content width, with responsive gutters and fluid headings.
+- Homepage display type up to 116px (124px in Chinese); app titles up to 104px. Document headings
+  are smaller, with body copy limited to 780px for comfortable reading.
+- Applications appear in an open index, separated by fine rules. Monochrome
+  icons, clear names, and restrained hover feedback keep navigation simple.
+- Shared navigation, language controls, and themes across all 54 routes.
+- Homepage content renders statically; only the shared theme control needs
+  JavaScript. Navigation and content remain usable without JavaScript.
+- Respect reduced motion, visible keyboard focus, and a user's saved theme.
 
 ## Per-app accents
 
@@ -56,7 +74,8 @@ metaphor layer:
 
 ## Canonical token files
 
-- Web: `src/layouts/Base.astro` (`:root` CSS variables) — this repo
+- Web: `src/styles/site.css` (`:root` CSS variables) — this repo;
+  browser theme colors are mirrored in `src/components/ThemeScript.astro`
 - Dayroll: `App/Tape.swift` · Simmer: `App/Theme.swift` · Sleeptab: `App/Theme.swift`
 - Steady: `App/Theme.swift`
 - Fresh Pantry: `apps/ios/FreshPantry/DesignSystem/FkColor.swift`

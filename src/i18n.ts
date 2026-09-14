@@ -19,12 +19,23 @@ type Strings = {
   navAbout: string;
   privacyPolicy: string;
   heroTagline: string;
+  heroLines: [string, string];
   heroLede: string;
+  studioLabel: string;
+  exploreApps: string;
   aboutLabel: string;
   aboutIntro: string;
   /** Manifesto rendered as lines joined by <br>. */
   manifesto: string[];
   appsLabel: string;
+  appsHeading: string;
+  appsIntro: string;
+  aboutHeading: [string, string];
+  engineering: string;
+  design: string;
+  contactLabel: string;
+  sayHello: string;
+  backTop: string;
   statusSoon: string;
   statusDev: string;
 };
@@ -38,11 +49,22 @@ export const STRINGS: Record<Lang, Strings> = {
     navAbout: '关于',
     privacyPolicy: '隐私政策',
     heroTagline: '小而精的应用。',
-    heroLede: '两个人的独立工作室，做小而精的应用。',
-    aboutLabel: '关于',
+    heroLines: ['小而精，', '用心而作'],
+    heroLede: '为日常的小事，做用心的应用。\n简单一点，从容一点。',
+    studioLabel: '两个人的独立应用工作室',
+    exploreApps: '探索我们的应用',
+    aboutLabel: '关于工作室',
     aboutIntro: 'Kun 负责工程，Shuyuan 负责设计与产品。',
     manifesto: ['每一款应用都是一颗鹅卵石：', '小、光滑、经得起时间。'],
-    appsLabel: '应用',
+    appsLabel: '我们的应用',
+    appsHeading: '小小应用，日日相伴。',
+    appsIntro: '每款应用专注一件事，把它做好。',
+    aboutHeading: ['两个人，', '一份用心。'],
+    engineering: '工程',
+    design: '设计与产品',
+    contactLabel: '保持联系',
+    sayHello: '来打个招呼。',
+    backTop: '回到顶部',
     statusSoon: '即将上架',
     statusDev: '开发中',
   },
@@ -54,11 +76,22 @@ export const STRINGS: Record<Lang, Strings> = {
     navAbout: 'About',
     privacyPolicy: 'Privacy Policy',
     heroTagline: 'Small, polished apps.',
-    heroLede: 'A two-person indie studio making small, polished apps.',
-    aboutLabel: 'About',
-    aboutIntro: 'A two-person indie studio — engineering by Kun, design & product by Shuyuan.',
+    heroLines: ['Small apps.', 'Made with care'],
+    heroLede: 'Thoughtful little tools for the everyday.\nA little simpler. A little brighter.',
+    studioLabel: 'An independent app studio',
+    exploreApps: 'Explore our apps',
+    aboutLabel: 'The studio',
+    aboutIntro: 'We’re a two-person indie studio. Kun builds the engineering. Shuyuan shapes the design and product.',
     manifesto: ['Every app is a pebble: small, smooth, and made to last.'],
-    appsLabel: 'Apps',
+    appsLabel: 'Our apps',
+    appsHeading: 'A little help, every day.',
+    appsIntro: 'Each app does one thing. Thoughtfully.',
+    aboutHeading: ['Two people.', 'One simple idea.'],
+    engineering: 'Engineering',
+    design: 'Design & product',
+    contactLabel: 'Keep in touch',
+    sayHello: 'Say hello.',
+    backTop: 'Back to top',
     statusSoon: 'Coming soon',
     statusDev: 'In development',
   },
