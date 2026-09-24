@@ -18,6 +18,7 @@ type Strings = {
   navApps: string;
   navAbout: string;
   privacyPolicy: string;
+  termsOfService: string;
   heroTagline: string;
   heroLines: [string, string];
   heroLede: string;
@@ -48,6 +49,7 @@ export const STRINGS: Record<Lang, Strings> = {
     navApps: '应用',
     navAbout: '关于',
     privacyPolicy: '隐私政策',
+    termsOfService: '服务条款',
     heroTagline: '小而精的应用。',
     heroLines: ['小而精，', '用心而作'],
     heroLede: '为日常的小事，做用心的应用。\n简单一点，从容一点。',
@@ -75,6 +77,7 @@ export const STRINGS: Record<Lang, Strings> = {
     navApps: 'Apps',
     navAbout: 'About',
     privacyPolicy: 'Privacy Policy',
+    termsOfService: 'Terms of Service',
     heroTagline: 'Small, polished apps.',
     heroLines: ['Small apps.', 'Made with care'],
     heroLede: 'Thoughtful little tools for the everyday.\nA little simpler. A little brighter.',

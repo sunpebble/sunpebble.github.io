@@ -86,7 +86,7 @@ export default function Home({ lang }: { lang: Lang }) {
       </div>
       <div className="footer-bottom">
         <div className="footer-company"><p>&copy; 2026 Sunpebble, LLC</p><address>131 Continental Dr Suite 305<br />Newark, DE, 19713 US</address></div>
-        <div className="footer-links"><a href={`${prefix}/privacy-policy/`}>{t.privacyPolicy}</a><a href="https://github.com/sunpebble">GitHub<Arrow diagonal /></a><a href="https://t.me/sunpebble">Telegram<Arrow diagonal /></a></div>
+        <div className="footer-links"><a href={`${prefix}/privacy-policy/`}>{t.privacyPolicy}</a><a href={`${prefix}/terms-of-service/`}>{t.termsOfService}</a><a href="https://github.com/sunpebble">GitHub<Arrow diagonal /></a><a href="https://t.me/sunpebble">Telegram<Arrow diagonal /></a></div>
         <a className="back-top" href="#top">{t.backTop}<Arrow /></a>
       </div>
     </footer>
