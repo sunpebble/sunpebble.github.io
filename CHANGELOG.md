@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.14.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.13.0...sunpebble.github.io-v1.14.0) (2026-09-24)
+
+
+### Features
+
+* **site:** add bilingual terms of service pages ([f9247a2](https://github.com/sunpebble/sunpebble.github.io/commit/f9247a2ac2d55344332c62c20b25a3b2229c9493))
+
+
+### Bug Fixes
+
+* **site:** serve crawlable favicons for Google Search ([79bb915](https://github.com/sunpebble/sunpebble.github.io/commit/79bb915a1f18685050837d72329d49043c472aa1))
+
 ## [1.13.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.12.0...sunpebble.github.io-v1.13.0) (2026-09-14)
 
 
