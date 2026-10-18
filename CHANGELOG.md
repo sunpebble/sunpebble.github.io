@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.14.0...sunpebble.github.io-v1.15.0) (2026-10-18)
+
+
+### Features
+
+* **site:** add mailto waitlist section to homepage ([f7934f4](https://github.com/sunpebble/sunpebble.github.io/commit/f7934f4c7df50a94232f9b60e7ce8ad795516e7c))
+
 ## [1.14.0](https://github.com/sunpebble/sunpebble.github.io/compare/sunpebble.github.io-v1.13.0...sunpebble.github.io-v1.14.0) (2026-09-24)
 
 
