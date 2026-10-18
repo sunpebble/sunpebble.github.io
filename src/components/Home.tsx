@@ -38,6 +38,8 @@ function SunAndPebble() {
 export default function Home({ lang }: { lang: Lang }) {
   const t = STRINGS[lang];
   const prefix = lang === 'zh' ? '/zh' : '';
+  const waitlistBody = `${t.waitlistBodyIntro}${APPS.map(a => `- ${a.name}`).join('\n')}\n${t.waitlistBodyOutro}`;
+  const waitlistHref = `mailto:support@sunpebblelabs.com?subject=${encodeURIComponent(t.waitlistSubject)}&body=${encodeURIComponent(waitlistBody)}`;
   return <>
     <main id="main-content">
       <section className="hero" aria-labelledby="hero-title">
@@ -67,8 +69,18 @@ export default function Home({ lang }: { lang: Lang }) {
           </a>)}
         </div>
       </section>
+      <section className="waitlist" id="waitlist" aria-labelledby="waitlist-title">
+        <p className="eyebrow"><span className="section-index">02 /</span>{t.waitlistLabel}</p>
+        <div className="waitlist-grid">
+          <div><h2 id="waitlist-title">{t.waitlistHeading}</h2><p className="waitlist-intro">{t.waitlistIntro}</p></div>
+          <div className="waitlist-action">
+            <a className="text-link waitlist-link" href={waitlistHref}>{t.waitlistCta}<span className="circle-arrow"><Arrow diagonal /></span></a>
+            <p className="waitlist-note">{t.waitlistNote}</p>
+          </div>
+        </div>
+      </section>
       <section className="about" id="about" aria-labelledby="about-title">
-        <p className="eyebrow"><span className="section-index">02 /</span>{t.aboutLabel}</p>
+        <p className="eyebrow"><span className="section-index">03 /</span>{t.aboutLabel}</p>
         <div className="about-grid">
           <h2 id="about-title">{t.aboutHeading[0]}<br /><span>{t.aboutHeading[1]}</span></h2>
           <div className="about-copy">

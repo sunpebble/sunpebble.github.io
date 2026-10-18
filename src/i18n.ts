@@ -39,6 +39,15 @@ type Strings = {
   backTop: string;
   statusSoon: string;
   statusDev: string;
+  waitlistLabel: string;
+  waitlistHeading: string;
+  waitlistIntro: string;
+  waitlistCta: string;
+  waitlistNote: string;
+  /** Prefilled mailto subject/body; the app list is appended to bodyIntro. */
+  waitlistSubject: string;
+  waitlistBodyIntro: string;
+  waitlistBodyOutro: string;
 };
 
 export const STRINGS: Record<Lang, Strings> = {
@@ -69,6 +78,14 @@ export const STRINGS: Record<Lang, Strings> = {
     backTop: '回到顶部',
     statusSoon: '即将上架',
     statusDev: '开发中',
+    waitlistLabel: '候补名单',
+    waitlistHeading: '上架时，第一个告诉你。',
+    waitlistIntro: '发一封邮件加入候补名单。应用上架时我们会来信通知，不发别的。',
+    waitlistCta: '加入候补名单',
+    waitlistNote: '将打开你的邮件应用，内容已帮你写好。',
+    waitlistSubject: '加入 Sunpebble 候补名单',
+    waitlistBodyIntro: '你好 Sunpebble，\n\n请把我加入候补名单。我感兴趣的应用：\n',
+    waitlistBodyOutro: '\n（删掉不感兴趣的即可。）',
   },
   en: {
     switchTo: '中',
@@ -97,6 +114,14 @@ export const STRINGS: Record<Lang, Strings> = {
     backTop: 'Back to top',
     statusSoon: 'Coming soon',
     statusDev: 'In development',
+    waitlistLabel: 'Waitlist',
+    waitlistHeading: 'Be the first to know.',
+    waitlistIntro: 'Send us a note to join the waitlist. We’ll email you when an app launches — nothing else.',
+    waitlistCta: 'Join the waitlist',
+    waitlistNote: 'Opens your mail app with a message ready to send.',
+    waitlistSubject: 'Join the Sunpebble waitlist',
+    waitlistBodyIntro: 'Hi Sunpebble,\n\nPlease add me to the waitlist. Apps I’m interested in:\n',
+    waitlistBodyOutro: '\n(Delete any you’re not interested in.)',
   },
 };
 
